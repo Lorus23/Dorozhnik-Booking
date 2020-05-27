@@ -1,14 +1,133 @@
 <?php
 
 return [
-		'user-management' => [		'title' => 'User management',		'fields' => [		],	],
-		'roles' => [		'title' => 'Roles',		'fields' => [			'title' => 'Title',		],	],
-		'users' => [		'title' => 'Users',		'fields' => [			'name' => 'Name',			'email' => 'Email',			'password' => 'Password',			'role' => 'Role',			'remember-token' => 'Remember token',		],	],
-		'countries' => [		'title' => 'Countries',		'fields' => [			'shortcode' => 'Shortcode',			'title' => 'Title',			'name' => 'Name',		],	],
-		'customers' => [		'title' => 'Customers',		'fields' => [			'first-name' => 'First name',			'last-name' => 'Last name',			'address' => 'Address',			'phone' => 'Phone',			'email' => 'Email',			'country' => 'Country',		],	],
-		'rooms' => [		'title' => 'Rooms',		'fields' => [			'room-number' => 'Room number',			'floor' => 'Floor',			'description' => 'Description',		],	],
-		'bookings' => [		'title' => 'Bookings',		'fields' => [			'customer' => 'Customer',			'room' => 'Room',			'time-from' => 'Time from',			'time-to' => 'Time to',			'additional-information' => 'Additional information',		],	],
-		'find-room' => [		'title' => 'Find room',		'fields' => [		],	],
+	
+	'user-management' => [
+		'title' => 'Пользователи',
+		'fields' => [
+		],
+	],
+	
+	'roles' => [
+		'title' => 'Роли',
+		'fields' => [
+			'title' => 'Title',
+		],
+	],
+    'checkins' => [
+        'title' => 'Check-In',
+        'fields' => [
+            'title' => 'Check-In',
+            'booking'=>'Бронь',
+            'client'=>'Клиент',
+            'adult_count'=>'Количество взрослых',
+            'kids_count'=>'Количество детей',
+            'adult_nutrition_count'=>'Количество питающихся взрослых',
+            'adult_breakfast'=>'Завтрак (взрослый)',
+            'adult_lunch'=>'Обед (взрослый)',
+            'adult_afternoon_tea'=>'Полдник (взрослый)',
+            'adult_dinner'=>'Ужин (взрослый)',
+            'kids_nutrition_count'=>'Количество питающихся детей',
+            'kids_breakfast'=>'Завтрак (детский)',
+            'kids_lunch'=>'Обед (детский)',
+            'kids_afternoon_tea'=>'Полдник (детский)',
+            'kids_dinner'=>'Ужин (детский)',
+            'pay_panel'=>'Панель оплаты',
+            'prepay_cache'=>'Предоплата нал.',
+            'prepay_kaspi'=>'Предоплата Kaspi',
+            'prepay_eurasian'=>'Предоплата Евраз.',
+            'prepay_forte'=>'Предоплата Forte',
+            'post_pay_cache'=>'Оплата по факту нал.',
+            'post_pay_kaspi'=>'Оплата по факту Kaspi',
+            'post_pay_eurasian'=>'Оплата по факту Евраз.',
+            'post_pay_forte'=>'Оплата по факту Forte',
+            'extra_pay_cache'=>'Доплата нал.',
+            'extra_pay_kaspi'=>'Доплата Kaspi',
+            'extra_pay_eurasian'=>'Доплата Евраз.',
+            'extra_pay_forte'=>'Доплата Forte',
+            'transport'=>'Транспорт',
+            'voucher'=>'Путевка',
+            'С_Т'=>'С.Т.',
+            'additionally_day'=>'Доп.день',
+            'additionally_night'=>'Доп.ночь',
+            'check_out_date'=>'Дата выезда',
+            'check_in_date'=>'Дата заезда',
+            'debt'=>'',
+
+        ],
+    ],
+	
+	'users' => [
+		'title' => 'Список',
+		'fields' => [
+			'name' => 'Имя',
+			'email' => 'Email',
+			'password' => 'Пароль',
+			'role' => 'Роль',
+			'remember-token' => 'Remember token',
+		],
+	],
+	
+	'countries' => [
+		'title' => 'Страны',
+		'fields' => [
+			'shortcode' => 'Индекс',
+			'title' => 'Заголовок',
+			'name' => 'Название',
+		],
+	],
+	
+	'customers' => [
+		'title' => 'Клиенты',
+		'fields' => [
+			'first-name' => 'Имя',
+			'last-name' => 'Фамилия',
+			'fathers_name' => 'Отчество',
+			'transport' => 'Транспорт',
+			'phone' => 'Телефон',
+			'email' => 'Email',
+			'country' => 'Страна',
+            'address'=>'Адрес',
+		],
+	],
+
+    'categories' => [
+		'title' => 'Категорий',
+        'fields' => [
+            'name' => 'Название категории',
+            ]
+		],
+
+	'rooms' => [
+		'title' => 'Номера',
+		'fields' => [
+			'room-number' => 'Номер комнаты',
+			'floor' => 'Этаж',
+			'description' => 'Описание',
+            'category' => 'Категория',
+		],
+	],
+	
+	'bookings' => [
+		'title' => 'Бронирование',
+		'fields' => [
+			'customer' => 'Клиент',
+			'room' => 'Номер',
+			'time-from' => 'Дата заезда',
+			'time-to' => 'Дата выезда',
+			'additional-information' => 'Дополнительная информация',
+            'amount'=> 'Сумма',
+		],
+	],
+	
+	'find-room' => [
+		'title' => 'Поиск номера',
+        'no_rooms_found'=> 'не найдено номеров',
+        'book_room'=>'Бронировать',
+		'fields' => [
+
+		],
+	],
 	'qa_create' => 'Создать',
 	'qa_save' => 'Сохранить',
 	'qa_edit' => 'Редактировать',
@@ -17,6 +136,8 @@ return [
 	'qa_all' => 'Все',
 	'qa_trash' => 'Удаленные',
 	'qa_view' => 'Просмотр',
+	'qa_detail' => 'Подробнее',
+    'qa_checkin' => 'Check-In',
 	'qa_update' => 'Обновить',
 	'qa_list' => 'Список',
 	'qa_no_entries_in_table' => 'Нет данных в таблице',
@@ -35,7 +156,7 @@ return [
 	'qa_answer' => 'Ответ',
 	'qa_sample_question' => 'Пример вопроса',
 	'qa_sample_answer' => 'Пример ответа',
-	'qa_faq_management' => 'Управление ЧАВО',
+	'qa_faq_management' => 'Управление FAQ',
 	'qa_administrator_can_create_other_users' => 'Администратор (может создавать других пользователей)',
 	'qa_simple_user' => 'Обычный пользователь',
 	'qa_title' => 'Заголовок',
@@ -241,5 +362,6 @@ return [
 	'qa_csv_file_to_import' => 'CSV файл для импорта',
 	'qa_parse_csv' => 'Спарсить CSV',
 	'qa_import_data' => 'Импорт данных',
-	'quickadmin_title' => 'hotel-booking',
+	'qa_avl_dates' => 'Свободные даты',
+	'quickadmin_title' => 'База отдыха "Дорожник"',
 ];

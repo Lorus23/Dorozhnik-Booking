@@ -6,7 +6,7 @@
     @can('booking_create')
     <p>
         <a href="{{ route('admin.bookings.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -46,7 +46,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($bookings) > 0)
                         @foreach ($bookings as $booking)
@@ -85,11 +85,14 @@
                                 @else
                                 <td>
                                     @can('booking_view')
-                                    <a href="{{ route('admin.bookings.show',[$booking->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                                    <a href="{{ route('admin.bookings.show',[$booking->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_detail')</a>
                                     @endcan
                                     @can('booking_edit')
                                     <a href="{{ route('admin.bookings.edit',[$booking->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
+                                        @can('booking_edit')
+                                            <a href="#" class="btn btn-xs btn-danger">@lang('quickadmin.qa_checkin')</a>
+                                        @endcan
                                     @can('booking_delete')
 {!! Form::open(array(
                                         'style' => 'display: inline-block;',
@@ -114,7 +117,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('booking_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.bookings.mass_destroy') }}'; @endif

@@ -137,6 +137,23 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        // Auth gates for: Check-Ins
+        Gate::define('checkin_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('checkin_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('checkin_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('checkin_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('checkin_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
         // Auth gates for: Find room
         Gate::define('find_room_access', function ($user) {
             return in_array($user->role_id, [1, 2]);

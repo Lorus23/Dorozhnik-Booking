@@ -22,7 +22,6 @@ class CustomersController extends Controller
             return abort(401);
         }
 
-
         if (request('show_deleted') == 1) {
             if (! Gate::allows('customer_delete')) {
                 return abort(401);
@@ -45,8 +44,6 @@ class CustomersController extends Controller
         if (! Gate::allows('customer_create')) {
             return abort(401);
         }
-        
-        $countries = \App\Country::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         return view('admin.customers.create', compact('countries'));
     }
@@ -64,11 +61,8 @@ class CustomersController extends Controller
         }
         $customer = Customer::create($request->all());
 
-
-
         return redirect()->route('admin.customers.index');
     }
-
 
     /**
      * Show the form for editing Customer.
@@ -104,11 +98,8 @@ class CustomersController extends Controller
         $customer = Customer::findOrFail($id);
         $customer->update($request->all());
 
-
-
         return redirect()->route('admin.customers.index');
     }
-
 
     /**
      * Display Customer.
@@ -128,7 +119,6 @@ class CustomersController extends Controller
 
         return view('admin.customers.show', compact('customer', 'bookings'));
     }
-
 
     /**
      * Remove Customer from storage.
@@ -165,7 +155,6 @@ class CustomersController extends Controller
             }
         }
     }
-
 
     /**
      * Restore Customer from storage.

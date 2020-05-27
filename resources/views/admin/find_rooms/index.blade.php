@@ -31,7 +31,7 @@
             <div class="col-xs-2">
                 <div class="form-group" style="margin-top: 5px;">
                     <label class="control-label"></label>
-                    {!! Form::submit('Search for rooms', ['class' => 'btn btn-danger btn-block']) !!}
+                    {!! Form::submit('Найти номер', ['class' => 'btn btn-danger btn-block']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -43,6 +43,7 @@
         @endif
         @if (!is_null($rooms))
         <div class="panel-body table-responsive">
+            <h3 class="font-weight-bold">Полностью свободные номера на эти даты</h3>
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -74,6 +75,42 @@
                 </tbody>
             </table>
         </div>
+            @if (!is_null($rooms_partially))
+                <div class="panel-body table-responsive">
+                    <h3 class="font-weight-bold">Полностью и частично свободные номера по дням</h3>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th/></th>
+                            <th>@lang('quickadmin.rooms.fields.room-number')</th>
+                            <th>@lang('quickadmin.qa_avl_dates')</th>
+                            <th>@lang('quickadmin.rooms.fields.floor')</th>
+                            <th>@lang('quickadmin.rooms.fields.description')</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($rooms_partially as $room_partially)
+                            <tr data-entry-id="{{ $room_partially->id }}">
+                                <td></td>
+                                <td field-key='room_number'>{{ $room_partially->room_number }}</td>
+                                <td field-key='time'>{{ $room_partially->time_from}}</td>
+                                <td field-key='floor'>{{ $room_partially->floor }}</td>
+                                <td field-key='description'>{!! $room_partially->description !!}</td>
+                                <td>
+                                    @can('booking_create')
+                                        <button class="btn btn-danger">
+                                            <a style="color: #ffffff;" href="{{ route('admin.bookings.create',
+                                        ['room_id' => $room_partially->id,'time_from' => $time_from, 'time_to' => $time_to]) }}">
+                                                {!!trans('quickadmin.find-room.book_room')!!}</a>
+                                        </button>
+                                    @endcan
+                                </td>
+                            </tr>
+                        @endforeach
+                        @endif
+                        </tbody>
+                    </table>
+                </div>
     </div>
 @stop
 @section('javascript')
@@ -85,7 +122,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script>
         $('.datetimepicker').datetimepicker({
-            format: "YYYY-MM-DD HH:mm"
+            format: "YYYY-MM-DD"
         });
     </script>
 @stop

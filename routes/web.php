@@ -48,6 +48,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('bookings_mass_destroy', ['uses' => 'Admin\BookingsController@massDestroy', 'as' => 'bookings.mass_destroy']);
     Route::post('bookings_restore/{id}', ['uses' => 'Admin\BookingsController@restore', 'as' => 'bookings.restore']);
     Route::delete('bookings_perma_del/{id}', ['uses' => 'Admin\BookingsController@perma_del', 'as' => 'bookings.perma_del']);
+    Route::resource('checkins', 'Admin\CheckinsController', ['except' => 'checkins.create']);
+    Route::get('checkins/create/', ['as' => 'checkins.create', 'uses' => 'Admin\CheckinsController@create']);
+    Route::post('checkins_mass_destroy', ['uses' => 'Admin\CheckinsController@massDestroy', 'as' => 'checkins.mass_destroy']);
+    Route::post('checkins_restore/{id}', ['uses' => 'Admin\CheckinsController@restore', 'as' => 'checkins.restore']);
+    Route::delete('checkins_perma_del/{id}', ['uses' => 'Admin\CheckinsController@perma_del', 'as' => 'checkins.perma_del']);
     //Route::resource('/find_rooms', 'Admin\FindRoomsController', ['except' => 'create']);
     Route::get('/find_rooms', 'Admin\FindRoomsController@index')->name('find_rooms.index');
     Route::post('/find_rooms', 'Admin\FindRoomsController@index');

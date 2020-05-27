@@ -21,6 +21,10 @@
                             <td field-key='last_name'>{{ $customer->last_name }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.customers.fields.last-name')</th>
+                            <td field-key='last_name'>{{ $customer->fathers_name }}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('quickadmin.customers.fields.address')</th>
                             <td field-key='address'>{{ $customer->address }}</td>
                         </tr>
@@ -33,9 +37,10 @@
                             <td field-key='email'>{{ $customer->email }}</td>
                         </tr>
                         <tr>
-                            <th>@lang('quickadmin.customers.fields.country')</th>
-                            <td field-key='country'>{{ $customer->country->title or '' }}</td>
+                            <th>@lang('quickadmin.customers.fields.transport')</th>
+                            <td field-key='email'>{{ $customer->transport }}</td>
                         </tr>
+
                     </table>
                 </div>
             </div><!-- Nav tabs -->

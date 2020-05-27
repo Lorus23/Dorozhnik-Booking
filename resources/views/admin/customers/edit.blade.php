@@ -37,6 +37,18 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('fathers_name', trans('quickadmin.customers.fields.fathers_name').'*', ['class' => 'control-label']) !!}
+                    {!! Form::text('fathers_name', old('fathers_name'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('fathers_name'))
+                        <p class="help-block">
+                            {{ $errors->first('fathers_name') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('address', trans('quickadmin.customers.fields.address').'*', ['class' => 'control-label']) !!}
                     {!! Form::text('address', old('address'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
@@ -73,12 +85,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('country_id', trans('quickadmin.customers.fields.country').'', ['class' => 'control-label']) !!}
-                    {!! Form::select('country_id', $countries, old('country_id'), ['class' => 'form-control select2']) !!}
+                    {!! Form::label('transport', trans('quickadmin.customers.fields.transport').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('phone', old('phone'), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('country_id'))
+                    @if($errors->has('transport'))
                         <p class="help-block">
-                            {{ $errors->first('country_id') }}
+                            {{ $errors->first('transport') }}
                         </p>
                     @endif
                 </div>

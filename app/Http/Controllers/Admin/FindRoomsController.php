@@ -27,6 +27,19 @@ class FindRoomsController extends Controller
         } else {
             $rooms = null;
         }
-        return view('admin.find_rooms.index', compact('rooms', 'time_from', 'time_to'));
+
+        if ($request->isMethod('POST')) {
+            $rooms_partially = Room::with('booking')->whereHas('booking', function ($q) use ($time_from, $time_to) {
+                $q->where(function ($q2) use ($time_from, $time_to) {
+                    $q2->where('time_to', '<', $time_to)
+                        ->orWhere('time_from', '>', $time_from);
+                });
+
+            })->orWhereDoesntHave('booking')->get();
+        } else {
+            $rooms_partially = null;
+        }
+
+        return view('admin.find_rooms.index', compact('rooms','rooms_partially', 'time_from', 'time_to'));
     }
 }
