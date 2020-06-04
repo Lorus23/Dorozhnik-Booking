@@ -30,7 +30,7 @@ class RoomsController extends Controller
             }
             $rooms = Room::onlyTrashed()->get();
         } else {
-            $rooms = Room::all();
+            $rooms = Room::with('category')->get();;
         }
 
         return view('admin.rooms.index', compact('rooms'));

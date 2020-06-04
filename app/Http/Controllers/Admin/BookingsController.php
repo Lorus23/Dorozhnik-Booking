@@ -83,7 +83,7 @@ class BookingsController extends Controller
             return abort(401);
         }
 
-        $customers = Customer::get()->pluck('first_name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $customers = Customer::get()->pluck('full_name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
         $rooms = Room::get()->pluck('room_number', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $booking = Booking::findOrFail($id);

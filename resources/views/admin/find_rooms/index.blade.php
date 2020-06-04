@@ -27,6 +27,16 @@
                         </p>
                     @endif
                 </div>
+                <div class="col-xs-6 form-group">
+                    {!! Form::label('category_id', trans('quickadmin.rooms.fields.category').'', ['class' => 'control-label']) !!}
+                    {!! Form::select('category_id', $categories, old('category_id'), ['class' => 'form-control select2']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('category_id'))
+                        <p class="help-block">
+                            {{ $errors->first('category_id') }}
+                        </p>
+                    @endif
+                </div>
             </div>
             <div class="col-xs-2">
                 <div class="form-group" style="margin-top: 5px;">
@@ -42,18 +52,20 @@
             </div>
         @endif
         @if (!is_null($rooms))
-        <div class="panel-body table-responsive">
-            <h3 class="font-weight-bold">Полностью свободные номера на эти даты</h3>
-            <table class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th/></th>
-                    <th>@lang('quickadmin.rooms.fields.room-number')</th>
-                    <th>@lang('quickadmin.rooms.fields.floor')</th>
-                    <th>@lang('quickadmin.rooms.fields.description')</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="panel-body table-responsive">
+                <h3 class="font-weight-bold">Полностью свободные номера на эти даты</h3>
+                <h5>Всего доступно номеров: <?php echo count($rooms);?></h5>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th/>
+                        </th>
+                        <th>@lang('quickadmin.rooms.fields.room-number')</th>
+                        <th>@lang('quickadmin.rooms.fields.floor')</th>
+                        <th>@lang('quickadmin.rooms.fields.description')</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     @foreach ($rooms as $room)
                         <tr data-entry-id="{{ $room->id }}">
                             <td></td>
@@ -71,46 +83,13 @@
                             </td>
                         </tr>
                     @endforeach
-                @endif
-                </tbody>
-            </table>
-        </div>
-            @if (!is_null($rooms_partially))
-                <div class="panel-body table-responsive">
-                    <h3 class="font-weight-bold">Полностью и частично свободные номера по дням</h3>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th/></th>
-                            <th>@lang('quickadmin.rooms.fields.room-number')</th>
-                            <th>@lang('quickadmin.qa_avl_dates')</th>
-                            <th>@lang('quickadmin.rooms.fields.floor')</th>
-                            <th>@lang('quickadmin.rooms.fields.description')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($rooms_partially as $room_partially)
-                            <tr data-entry-id="{{ $room_partially->id }}">
-                                <td></td>
-                                <td field-key='room_number'>{{ $room_partially->room_number }}</td>
-                                <td field-key='time'>{{ $room_partially->time_from}}</td>
-                                <td field-key='floor'>{{ $room_partially->floor }}</td>
-                                <td field-key='description'>{!! $room_partially->description !!}</td>
-                                <td>
-                                    @can('booking_create')
-                                        <button class="btn btn-danger">
-                                            <a style="color: #ffffff;" href="{{ route('admin.bookings.create',
-                                        ['room_id' => $room_partially->id,'time_from' => $time_from, 'time_to' => $time_to]) }}">
-                                                {!!trans('quickadmin.find-room.book_room')!!}</a>
-                                        </button>
-                                    @endcan
-                                </td>
-                            </tr>
-                        @endforeach
-                        @endif
-                        </tbody>
-                    </table>
-                </div>
+
+                    @endif
+                    </tbody>
+                </table>
+
+            </div>
+
     </div>
 @stop
 @section('javascript')

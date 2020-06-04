@@ -21,6 +21,14 @@
                             <td field-key='floor'>{{ $room->floor }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.rooms.fields.quantity_rooms')</th>
+                            <td field-key='floor'>{{ $room->quantity_rooms }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.rooms.fields.quantity_places')</th>
+                            <td field-key='floor'>{{ $room->quantity_places }}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('quickadmin.rooms.fields.description')</th>
                             <td field-key='description'>{!! $room->description !!}</td>
                         </tr>

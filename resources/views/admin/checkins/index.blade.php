@@ -3,18 +3,18 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.checkins.title')</h3>
-    @can('checkin_create')
-    <p>
-        <a href="{{ route('admin.checkins.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
-    </p>
-    @endcan
+{{--    @can('checkin_create')--}}
+{{--    <p>--}}
+{{--        <a href="{{ route('admin.checkins.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>--}}
+{{--        --}}
+{{--    </p>--}}
+{{--    @endcan--}}
 
     @can('checkin_delete')
     <p>
         <ul class="list-inline">
-            <li><a href="{{ route('admin.checkins.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li> |
-            <li><a href="{{ route('admin.checkins.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">@lang('quickadmin.qa_trash')</a></li>
+            <li><a href="{{ route('admin.checkins.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">Check-In</a></li> |
+            <li><a href="{{ route('admin.checkins.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">Check-Out</a></li>
         </ul>
     </p>
     @endcan
@@ -34,6 +34,8 @@
                         @endcan
 
                         <th>@lang('quickadmin.checkins.fields.booking')</th>
+                        <th>@lang('quickadmin.checkins.fields.client')</th>
+                        <th>@lang('quickadmin.checkins.fields.room_number')</th>
                         <th>@lang('quickadmin.checkins.fields.adult_count')</th>
                         <th>@lang('quickadmin.checkins.fields.kids_count')</th>
                         <th>@lang('quickadmin.checkins.fields.check_in_date')</th>
@@ -55,7 +57,9 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='booking'>{{ $checkin->booking_id }}</td>
+                                <td field-key='booking_id'>{{ $checkin->booking_id }}</td>
+                                <td field-key='customer'>{{ $checkin->customer }}</td>
+                                <td field-key='room_number'>{{ $checkin->booking->room->room_number }}</td>
                                 <td field-key='adult_count'>{{ $checkin->adult_count }}</td>
                                 <td field-key='kids_count'>{{ $checkin->kids_count }}</td>
                                 <td field-key='check_in_date'>{{ $checkin->check_in_date }}</td>
@@ -68,8 +72,8 @@
                                         'style' => 'display: inline-block;',
                                         'method' => 'POST',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['admin.bookings.restore', $checkin->id])) !!}
-                                    {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
+                                        'route' => ['admin.checkins.restore', $checkin->id])) !!}
+                                    {!! Form::submit(trans('Вернуть в Check-In'), array('class' => 'btn btn-xs btn-success')) !!}
                                     {!! Form::close() !!}
                                 @endcan
                                     @can('booking_delete')
@@ -77,7 +81,7 @@
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['admin.bookings.perma_del', $checkin->id])) !!}
+                                        'route' => ['admin.checkins.perma_del', $checkin->id])) !!}
                                     {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                 @endcan
@@ -87,16 +91,16 @@
                                     @can('checkin_view')
                                     <a href="{{ route('admin.checkins.show',[$checkin->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_detail')</a>
                                     @endcan
-                                    @can('checkin_edit')
-                                    <a href="{{ route('admin.checkins.edit',[$checkin->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
-                                    @endcan
+{{--                                    @can('checkin_edit')--}}
+{{--                                    <a href="{{ route('admin.checkins.edit',[$checkin->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>--}}
+{{--                                    @endcan--}}
                                     @can('checkin_delete')
 {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
                                         'route' => ['admin.checkins.destroy', $checkin->id])) !!}
-                                    {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                    {!! Form::submit(trans('Check-Out'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
                                 </td>
@@ -117,7 +121,7 @@
 @section('javascript') 
     <script>
         @can('booking_delete')
-            @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.bookings.mass_destroy') }}'; @endif
+                @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.checkins.mass_destroy') }}'; @endif
         @endcan
 
     </script>

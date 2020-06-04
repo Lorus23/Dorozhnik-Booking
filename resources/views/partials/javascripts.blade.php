@@ -1,5 +1,6 @@
 <script>
     window.deleteButtonTrans = '{{ trans("quickadmin.qa_delete_selected") }}';
+    window.checkoutButtonTrans = '{{ trans("quickadmin.qa_checkout") }}';
     window.copyButtonTrans = '{{ trans("quickadmin.qa_copy") }}';
     window.csvButtonTrans = '{{ trans("quickadmin.qa_csv") }}';
     window.excelButtonTrans = '{{ trans("quickadmin.qa_excel") }}';

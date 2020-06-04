@@ -60,6 +60,32 @@
                     @endif
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('quantity_rooms', trans('quickadmin.rooms.fields.quantity_rooms').'*', ['class' => 'control-label']) !!}
+                    {!! Form::number('quantity_rooms', old('quantity_rooms'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('quantity_rooms'))
+                        <p class="help-block">
+                            {{ $errors->first('quantity_rooms') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('quantity_places', trans('quickadmin.rooms.fields.quantity_places').'*', ['class' => 'control-label']) !!}
+                    {!! Form::number('quantity_places', old('quantity_places'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('quantity_places'))
+                        <p class="help-block">
+                            {{ $errors->first('quantity_places') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
             
         </div>
     </div>

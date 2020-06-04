@@ -35,6 +35,9 @@
 
                         <th>@lang('quickadmin.rooms.fields.room-number')</th>
                         <th>@lang('quickadmin.rooms.fields.floor')</th>
+                        <th>@lang('quickadmin.rooms.fields.category')</th>
+                        <th>@lang('quickadmin.rooms.fields.quantity_rooms')</th>
+                        <th>@lang('quickadmin.rooms.fields.quantity_places')</th>
                         <th>@lang('quickadmin.rooms.fields.description')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
@@ -54,6 +57,9 @@
 
                                 <td field-key='room_number'>{{ $room->room_number }}</td>
                                 <td field-key='floor'>{{ $room->floor }}</td>
+                                <td field-key='floor'>{{ $room->category->name }}</td>
+                                <td field-key='floor'>{{ $room->quantity_rooms}} комнатный</td>
+                                <td field-key='floor'>{{ $room->quantity_places}} местный</td>
                                 <td field-key='description'>{!! $room->description !!}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>

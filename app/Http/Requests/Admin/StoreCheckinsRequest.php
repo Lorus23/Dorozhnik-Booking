@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBookingsRequest extends FormRequest
+class StoreCheckinsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,12 @@ class StoreBookingsRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id' => 'required',
-            'room_id' => 'required',
-            'time_from' => 'required|date_format:'.config('app.date_format').' H:i',
-            'time_to' => 'required|date_format:'.config('app.date_format'). ' H:i',
-            'additional_information' => 'required',
+            'booking_id' => 'required',
+            'customer' => 'required',
+            'check_in_date' => 'required|date_format:'.config('app.date_format').' H:i',
+            'check_out_date' => 'required|date_format:'.config('app.date_format'). ' H:i',
+            'adult_count' => 'required',
+            'amount' => 'required',
         ];
     }
 }

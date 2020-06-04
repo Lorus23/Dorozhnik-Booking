@@ -6,7 +6,6 @@
     @can('booking_create')
     <p>
         <a href="{{ route('admin.bookings.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-
     </p>
     @endcan
 
@@ -18,7 +17,6 @@
         </ul>
     </p>
     @endcan
-
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -32,7 +30,7 @@
                         @can('booking_delete')
                             @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>@endif
                         @endcan
-
+                        <th>@lang('quickadmin.bookings.fields.id')</th>
                         <th>@lang('quickadmin.bookings.fields.customer')</th>
                         <th>@lang('quickadmin.bookings.fields.room')</th>
                         <th>@lang('quickadmin.bookings.fields.time-from')</th>
@@ -55,6 +53,7 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
+                                <td field-key='customer'>{{ $booking->id }}</td>
                                 <td field-key='customer'>{{ $booking->customer->full_name or '' }}</td>
                                 <td field-key='room'>{{ $booking->room->room_number or '' }}</td>
                                 <td field-key='time_from'>{{ $booking->time_from }}</td>
@@ -90,9 +89,13 @@
                                     @can('booking_edit')
                                     <a href="{{ route('admin.bookings.edit',[$booking->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
-                                        @can('booking_edit')
-                                            <a href="#" class="btn btn-xs btn-danger">@lang('quickadmin.qa_checkin')</a>
-                                        @endcan
+
+
+                                    @can('checkin_create')
+                                    <a href="{{ route('admin.checkins.create',['booking_id' => $booking->id,'customer'=>$booking->customer->full_name, 'check_in_date' =>$booking->time_from, 'check_out_date' => $booking->time_to, 'amount'=>$booking->amount]) }}"
+                                       class="btn btn-xs btn-danger">@lang('quickadmin.qa_checkin')</a>
+                                    @endcan
+
                                     @can('booking_delete')
 {!! Form::open(array(
                                         'style' => 'display: inline-block;',

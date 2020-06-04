@@ -14,6 +14,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('customer_id', trans('quickadmin.bookings.fields.customer').' *', ['class' => 'control-label']) !!}
                     {!! Form::select('customer_id', $customers, old('customer_id'), ['class' => 'form-control select2']) !!}
+                    <a href="{{ route('admin.customers.create') }}" class="btn btn-success btn-sm fa fa-plus-circle"></a>
                     <p class="help-block"></p>
                     @if($errors->has('customer_id'))
                         <p class="help-block">
@@ -74,12 +75,12 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('Precio',trans('quickadmin.bookings.fields.amount').'*') !!}
+                    {!! Form::label('amount',trans('quickadmin.bookings.fields.amount').'*') !!}
                     {!! Form::text('amount', old('amount'), ['class' => 'form-control ', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('additional_information'))
+                    @if($errors->has('amount'))
                         <p class="help-block">
-                            {{ $errors->first('additional_information') }}
+                            {{ $errors->first('amount') }}
                         </p>
                     @endif
                 </div>

@@ -14,7 +14,7 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.bookings.fields.customer')</th>
-                            <td field-key='customer'>{{ $booking->customer->first_name or '' }}</td>
+                            <td field-key='customer'>{{ $booking->customer->full_name or '' }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.bookings.fields.room')</th>

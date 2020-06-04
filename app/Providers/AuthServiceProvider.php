@@ -108,16 +108,16 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
         Gate::define('room_create', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [1]);
         });
         Gate::define('room_edit', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [1]);
         });
         Gate::define('room_view', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
         Gate::define('room_delete', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [1]);
         });
 
         // Auth gates for: Bookings
@@ -134,7 +134,7 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
         Gate::define('booking_delete', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [1]);
         });
 
         // Auth gates for: Check-Ins
