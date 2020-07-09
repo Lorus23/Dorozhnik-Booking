@@ -71,7 +71,49 @@
                     @endif
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">@lang('quickadmin.checkins.fields.pay_panel')</div>
+                <div class="panel-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                {!! Form::label('prepay_cache',trans('quickadmin.checkins.fields.prepay_cache').'*') !!}
+                                <br>
+                                {!! Form::text('prepay_cache', old('prepay_cache'), ['class' => '', 'placeholder' => '0', 'value'=>'0']) !!}
+                                <br>
 
+                                {!! Form::label('prepay_kaspi',trans('quickadmin.checkins.fields.prepay_kaspi')) !!}
+                                <br>
+                                {!! Form::text('prepay_kaspi', old('prepay_kaspi'), ['class' => '', 'placeholder' => '0', 'value'=>'0']) !!}
+                                <br>
+
+                                {!! Form::label('prepay_eurasian',trans('quickadmin.checkins.fields.prepay_eurasian')) !!}
+                                <br>
+                                {!! Form::text('prepay_eurasian', old('prepay_eurasian'), ['class' => '', 'placeholder' => '0', 'value'=>'0']) !!}
+                                <br>
+
+                                {!! Form::label('prepay_forte',trans('quickadmin.checkins.fields.prepay_forte')) !!}
+                                <br>
+                                {!! Form::text('prepay_forte', old('prepay_forte'), ['class' => '', 'placeholder' => '0', 'value'=>'0']) !!}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('amount',trans('quickadmin.bookings.fields.amount').'*') !!}
+                    {!! Form::text('amount', old('amount'), ['class' => 'form-control ', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('amount'))
+                        <p class="help-block">
+                            {{ $errors->first('amount') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
             
         </div>
     </div>

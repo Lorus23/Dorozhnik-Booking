@@ -92,7 +92,7 @@
 
 
                                     @can('checkin_create')
-                                    <a href="{{ route('admin.checkins.create',['booking_id' => $booking->id,'customer'=>$booking->customer->full_name, 'check_in_date' =>$booking->time_from, 'check_out_date' => $booking->time_to, 'amount'=>$booking->amount]) }}"
+                                    <a href="{{ route('admin.checkins.create',['booking_id' => $booking->id,'customer'=>$booking->customer->full_name, 'check_in_date' =>$booking->time_from, 'check_out_date' => $booking->time_to, 'prepay_cache'=> $booking->prepay_cache,'prepay_kaspi'=> $booking->prepay_kaspi,'prepay_eurasian'=> $booking->prepay_eurasian,'prepay_forte'=> $booking->prepay_forte,'amount'=>$booking->amount]) }}"
                                        class="btn btn-xs btn-danger">@lang('quickadmin.qa_checkin')</a>
                                     @endcan
 
