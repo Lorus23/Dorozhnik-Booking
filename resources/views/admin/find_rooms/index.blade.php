@@ -38,6 +38,7 @@
                     @endif
                 </div>
             </div>
+
             <div class="col-xs-2">
                 <div class="form-group" style="margin-top: 5px;">
                     <label class="control-label"></label>
@@ -46,15 +47,13 @@
                 </div>
             </div>
         </div>
-        @if (isset($rooms) && is_null($rooms))
+        @if (isset($new_rooms) && is_null($new_rooms))
             <div class="form-group" style="text-align: center">
                 <label>@lang('quickadmin.find-room.no_rooms_found')</label>
             </div>
         @endif
-        @if (!is_null($rooms))
+        @if (!is_null($new_rooms))
             <div class="panel-body table-responsive">
-                <h3 class="font-weight-bold">Полностью свободные номера на эти даты</h3>
-                <h5>Всего доступно номеров: <?php echo count($rooms);?></h5>
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
@@ -62,21 +61,25 @@
                         </th>
                         <th>@lang('quickadmin.rooms.fields.room-number')</th>
                         <th>@lang('quickadmin.rooms.fields.floor')</th>
+                        <th>@lang('quickadmin.rooms.fields.quantity_places')</th>
+                        <th>@lang('quickadmin.rooms.fields.quantity_rooms')</th>
                         <th>@lang('quickadmin.rooms.fields.description')</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($rooms as $room)
-                        <tr data-entry-id="{{ $room->id }}">
+                    @foreach ($new_rooms as $room)
+                        <tr data-entry-id="{{ $room['id'] }}">
                             <td></td>
-                            <td field-key='room_number'>{{ $room->room_number }}</td>
-                            <td field-key='floor'>{{ $room->floor }}</td>
-                            <td field-key='description'>{!! $room->description !!}</td>
+                            <td field-key='room_number'>{{ $room['room_number'] }}</td>
+                            <td field-key='floor'>{{ $room['floor'] }}</td>
+                            <td field-key='floor'>{{ $room['quantity_places'] }}</td>
+                            <td field-key='floor'>{{ $room['quantity_rooms'] }}</td>
+                            <td field-key='description'>{!! $room['description'] !!}</td>
                             <td>
                                 @can('booking_create')
                                     <button class="btn btn-danger">
                                         <a style="color: #ffffff;" href="{{ route('admin.bookings.create',
-                                        ['room_id' => $room->id,'time_from' => $time_from, 'time_to' => $time_to]) }}">
+                                        ['room_id' => $room['id'],'time_from' => $time_from, 'time_to' => $time_to]) }}">
                                             {!!trans('quickadmin.find-room.book_room')!!}</a>
                                     </button>
                                 @endcan
@@ -87,9 +90,7 @@
                     @endif
                     </tbody>
                 </table>
-
             </div>
-
     </div>
 @stop
 @section('javascript')
@@ -101,7 +102,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script>
         $('.datetimepicker').datetimepicker({
-            format: "YYYY-MM-DD"
+            format: "YYYY-MM-DD HH:mm"
         });
     </script>
 @stop

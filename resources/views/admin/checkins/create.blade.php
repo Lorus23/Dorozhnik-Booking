@@ -14,11 +14,11 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('booking_id', trans('quickadmin.checkins.fields.booking'), ['class' => 'control-label']) !!}
-                    {!! Form::select('booking_id', $bookings, old('booking_id'), ['class' => 'form-control select2', 'readonly']) !!}
+                    {!! Form::text('booking_id', old('booking_id'), ['class' => 'form-control', 'readonly']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('booking_id'))
+                    @if($errors->has('booking'))
                         <p class="help-block">
-                            {{ $errors->first('booking_id') }}
+                            {{ $errors->first('booking') }}
                         </p>
                     @endif
                 </div>

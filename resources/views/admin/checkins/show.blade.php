@@ -144,13 +144,17 @@
                             <th>@lang('quickadmin.checkins.fields.additionally_night')</th>
                             <td field-key='additionally_night'>{!! $checkin->additionally_night !!}</td>
                         </tr>
+                        <tr>
+                            <th>@lang('quickadmin.checkins.fields.debt')</th>
+                            <td field-key='additionally_night'>{!! $checkin->debt !!}</td>
+                        </tr>
                     </table>
                 </div>
             </div>
 
             <p>&nbsp;</p>
 
-            <a href="{{ route('admin.bookings.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
+            <a href="{{ route('admin.checkins.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
         </div>
     </div>
 @stop

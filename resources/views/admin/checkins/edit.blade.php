@@ -7,14 +7,14 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            @lang('quickadmin.qa_create')
+            @lang('quickadmin.qa_edit')
         </div>
 
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('booking_id', trans('quickadmin.checkins.fields.booking'), ['class' => 'control-label']) !!}
-                    {!! Form::select('booking_id', $bookings, old('booking_id'), ['class' => 'form-control select2', 'readonly']) !!}
+                    {!! Form::text('booking_id', old('booking_id'), ['class' => 'form-control', 'readonly']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('booking_id'))
                         <p class="help-block">
