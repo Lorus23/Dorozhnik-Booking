@@ -77,7 +77,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                {!! Form::label('prepay_cache',trans('quickadmin.checkins.fields.prepay_cache').'*') !!}
+                                {!! Form::label('prepay_cache',trans('quickadmin.checkins.fields.prepay_cache')) !!}
                                 <br>
                                 {!! Form::text('prepay_cache', old('prepay_cache'), ['class' => '', 'placeholder' => '0', 'value'=>'0']) !!}
                                 <br>

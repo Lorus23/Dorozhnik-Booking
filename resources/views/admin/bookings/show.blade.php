@@ -29,6 +29,26 @@
                             <td field-key='time_to'>{{ $booking->time_to }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.checkins.fields.prepay_cache')</th>
+                            <td field-key='time_to'>{{ $booking->prepay_cache }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.checkins.fields.prepay_kaspi')</th>
+                            <td field-key='time_to'>{{ $booking->prepay_kaspi }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.checkins.fields.prepay_eurasian')</th>
+                            <td field-key='time_to'>{{ $booking->prepay_eurasian }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.checkins.fields.prepay_forte')</th>
+                            <td field-key='time_to'>{{ $booking->prepay_forte }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.bookings.fields.amount')</th>
+                            <td field-key='time_to'>{{ $booking->amount }}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('quickadmin.bookings.fields.additional-information')</th>
                             <td field-key='additional_information'>{!! $booking->additional_information !!}</td>
                         </tr>
